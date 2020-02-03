@@ -1,0 +1,27 @@
+
+{
+  "name": "Nora",
+  "short_name": "NoCache",
+  "icons": [{
+    "src": "images/hc-icon.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    }, {
+      "src": "images/chl.png",
+      "sizes": "152x152",
+      "type": "image/png"
+    }, {
+      "src": "images/hc-icon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }, {
+      "src": "images/hc-icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }],
+  "lang": "en-US",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "white",
+  "theme_color": "white"
+}
