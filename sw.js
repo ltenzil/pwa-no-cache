@@ -16,7 +16,11 @@ self.addEventListener('install', function(e) {
 self.addEventListener('fetch', function(e) {
   e.respondWith(
     caches.match(e.request).then(function(response) {
-	  return response || fetch(e.request);
+	     if (navigate.onLine == false) {
+          return fetch('/offline.html')
+        } else {
+          return response || fetch(e.request);
+        }
 	 //  if (navigate.onLine == false) {
 		// return response || caches.match('/offline.html');
 	 //  }else {
