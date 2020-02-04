@@ -15,11 +15,10 @@ self.addEventListener('install', function(e) {
 /* Serve cached content when offline */
 self.addEventListener('fetch', function(event) {
   event.respondWith(
-    if (navigate.onLine == false) {
-      return caches.match('/offline.html')
-    } else {
-      event.respondWith(fetch(event.request));
-    }
+    // Return it if we found one.
+    // if (navigator.onLine) return fetch(event.request);
+    // If we didn't find a match in the cache, use the network.
+    fetch(event.request)
 	 //  if (navigate.onLine == false) {
 		// return response || caches.match('/offline.html');
 	 //  }else {
@@ -31,13 +30,13 @@ self.addEventListener('fetch', function(event) {
       //   // }
       //   return response
       // });
-    }).catch(function() {
-      // If both fail, show a generic fallback:
-      return caches.match('/offline.html');
-      // However, in reality you'd have many different
-      // fallbacks, depending on URL & headers.
-      // Eg, a fallback silhouette image for avatars.
-    })
+    // }).catch(function() {
+    //   // If both fail, show a generic fallback:
+    //   return caches.match('/offline.html');
+    //   // However, in reality you'd have many different
+    //   // fallbacks, depending on URL & headers.
+    //   // Eg, a fallback silhouette image for avatars.
+    // })
   );
 });
 
