@@ -13,14 +13,13 @@ self.addEventListener('install', function(e) {
 });
 
 /* Serve cached content when offline */
-self.addEventListener('fetch', function(e) {
-  e.respondWith(
-    caches.match(e.request).then(function(response) {
-	     if (navigate.onLine == false) {
-          return fetch('/offline.html')
-        } else {
-          return response || fetch(e.request);
-        }
+self.addEventListener('fetch', function(event) {
+  event.respondWith(
+    if (navigate.onLine == false) {
+      return caches.match('/offline.html')
+    } else {
+      event.respondWith(fetch(event.request));
+    }
 	 //  if (navigate.onLine == false) {
 		// return response || caches.match('/offline.html');
 	 //  }else {
